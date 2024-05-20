@@ -17,8 +17,8 @@ namespace WebApplication1.Services
             var response = await _httpClient.PostAsJsonAsync("/predict", predictionRequest);
             response.EnsureSuccessStatusCode();
 
-            var predictionResponse = await response.Content.ReadFromJsonAsync<PredictionResponse>();
-            return predictionResponse.Response;
+            var predictionResponse = await response.Content.ReadAsStringAsync();
+            return predictionResponse;
         }
     }
 }
